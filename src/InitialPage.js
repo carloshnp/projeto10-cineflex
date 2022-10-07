@@ -3,10 +3,10 @@ import styled from "styled-components"
 import axios from "axios"
 import Movie from "./Movie"
 
-export default function InitialPage(params) {
+export default function InitialPage() {
 
+    const [status, setStatus] = useState('')
     const [movies, setMovies] = useState([])
-    const [movie, setMovie] = useState('')
 
     useEffect(() => {
         const URL = "https://mock-api.driven.com.br/api/v5/cineflex/movies"
@@ -15,21 +15,31 @@ export default function InitialPage(params) {
         promise.then((ans) => {
             console.log(ans.data)
             setMovies(ans.data)
+        }).catch((ans) => {
+            console.log(ans.response.status)
+            setStatus(ans.response.status)
+            setTimeout(() => {
+                window.location.reload()
+            }, 5000)
         })
+
     }, [])
 
-    function selectMovie(key) {
-        return
+    if (status === 404) {
+        return (
+            <h1>deu ruim! recarregue a página!</h1>
+        )
     }
-
-    return (
-        <Container>
-            <h1>Selecione o filme</h1>
-            <MoviesContainer>
-                {movies.map((movie) => <Movie key={movie.id} img={movie.posterURL} title={movie.title} setMovie={setMovie} selectMovie={selectMovie} />)}
-            </MoviesContainer>
-        </Container>
-    )
+    else {
+        return (
+            <Container>
+                <h1>Selecione o filme</h1>
+                <MoviesContainer>
+                    {movies.map((movie) => <Movie sessionId={movie.id} img={movie.posterURL} title={movie.title} />)}
+                </MoviesContainer>
+            </Container>
+        )
+        }
 }
 
 

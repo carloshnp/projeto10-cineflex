@@ -13,7 +13,7 @@ export default function App() {
             <NavBar />
             <Routes>
                 <Route path="/" element={<InitialPage />} />
-                <Route path="/session-page" element={<SessionPage />} />
+                <Route path="/session-page/:sessionId" element={<SessionPage />} />
                 <Route path="/seat-page" element={<SeatPage />} />
                 <Route path="/success-page" element={<SuccessPage />} />
             </Routes>

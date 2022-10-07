@@ -1,9 +1,12 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
-export default function Movie({img, title, selectMovie, key}) {
+export default function Movie({ img, title, sessionId }) {
     return (
         <Container>
-            <img onClick={selectMovie(key)} src={img} alt={title} />
+            <Link to={`/session-page/${sessionId}`}>
+                <img src={img} alt={title} />
+            </Link>
         </Container>
     )
 }
