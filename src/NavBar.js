@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export default function NavBar(params) {
+export default function NavBar() {
     return (
         <NavBarContainer>
             <p>CINEFLEX</p>

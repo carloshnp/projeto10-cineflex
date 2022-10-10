@@ -7,15 +7,16 @@ import SeatPage from "./SeatPage"
 import SuccessPage from "./SuccessPage"
 
 export default function App() {
+
     return (
         <BrowserRouter>
             <GlobalStyle />
             <NavBar />
             <Routes>
                 <Route path="/" element={<InitialPage />} />
-                <Route path="/session-page/:sessionId" element={<SessionPage />} />
-                <Route path="/seat-page" element={<SeatPage />} />
-                <Route path="/success-page" element={<SuccessPage />} />
+                <Route path="/sessoes/:idFilme" element={<SessionPage />} />
+                <Route path="/assentos/:idSessao" element={<SeatPage />} />
+                <Route path="/sucesso" element={<SuccessPage />} />
             </Routes>
         </BrowserRouter>
     )

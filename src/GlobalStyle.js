@@ -27,6 +27,7 @@ const GlobalStyle = createGlobalStyle`
         display: block;
     }
     body {
+        font-family: 'Roboto', sans-serif;
         line-height: 1;
     }
     ol, ul {
